@@ -1,0 +1,2 @@
+who | grep cavanzo > /dev/null 2>&1 && write root < message.txt
+

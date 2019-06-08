@@ -1,0 +1,2 @@
+# isolate the virtual host scope
+sed -n '/^#<VirtualHost/,/^#<\/VirtualHost/p' httpd.conf 

@@ -1,0 +1,8 @@
+# like grep
+sed -n '/^cavanzo/ p' passwd 
+
+# substitute a pattern
+sed -n '/^cavanzo/ s/Cavanzo/Floriano/p' passwd
+
+# substitude all occurences and create a new file
+sed -n 's/sed/Linux/pgw sed2' sed_test

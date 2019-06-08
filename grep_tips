@@ -1,0 +1,3 @@
+# check the numbers of cpu in the system
+grep -c name /proc/cpuinfo
+

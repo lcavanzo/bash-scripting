@@ -1,0 +1,4 @@
+if [ -z $1 ] ; then
+    echo -e "${RED}usage :${RESET} $0"
+    exit 2
+fi
