@@ -1,0 +1,20 @@
+#!/bin/bash 
+
+# remember  -- An easy commnand line-based reminder pad
+
+rememberfile="$HOME/.remember"
+
+if [ $# -eq 0 ] ; then
+    # Prompt the user for input and append whatever they write to 
+    #   the remember file
+    echo "Enter note, end with ^D"
+    #the - in the command is short-hand for stdin or stdout , 
+    #   depending on the context)
+    cat - >> $rememberfile
+else
+    #Append any arguments passed to the script on to the .remember file
+    echo "$@" >> $rememberfile
+fi
+
+exit 0
+

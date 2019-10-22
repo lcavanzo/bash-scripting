@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# scriptbc -- Wrapper for 'bc' that returns the resutl of a calculation
+if [ "$1" = "-p" ] ; then
+    precision=$2
+    # shift will remove two parameters, in this case the "-p <number>"
+    #   then the operation will be the first parameter
+    shift 2
+else
+    precision=2     #Default
+fi
+
+bc -q -l << EOF
+    scale=$precision
+    $*
+    quit
+EOF
+
+exit

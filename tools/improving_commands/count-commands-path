@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# How many commnans: a simple script to count how many executable
+#   commands are in your PATH
+
+IFS=":"
+count=0
+nonex=0
+for directory in $PATH ; do
+    if [ -d "$directory" ] ; then
+        for cmd in "$directory"/* ; do
+            if [ -x "$cmd" ] ; then
+                count="$(( $count + 1 ))"
+            else
+                nonex="$(( $nonex + 1 ))"
+            fi
+        done
+    fi
+done
+
+echo "$count commmands, and $nonex entries that weren't executables"
+
+exit 0

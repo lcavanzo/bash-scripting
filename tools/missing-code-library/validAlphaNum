@@ -1,0 +1,42 @@
+#!/bin/bash
+# validAlphaNum -- Ensures that input consist only of alphabetical
+#   and numeric characters
+
+validAlphaNum()
+{
+    # Validate arg: return 0 if all upper+lower+digits; 1 otherwise
+
+    # Remove all unacceptable chars.
+    validchars="$(echo $1 | sed -e 's/[^[:alnum:]]//g')"
+
+    # Allow uppercase letters, spaces, commas and periods
+    ## sed 's/[^[:upper:] ,.]//g'
+
+    # Validate a phone number, allowing integers, spaces, parentheses and dashes
+    #  but not leading spaces ot multiple spaces in sequence
+    ## sed 's/[^- [:digit:]\(\)]//g'
+    ## sed 's/[^[:digit:]]//g' #### only numbers
+
+
+    if [ "$validchars" = "$1" ] ; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# BEGIN MAIN SCRIPT--DELETE OR COMMENT OUT EVERYTHING BELOW THIS LINE IF
+#   YOU WANT TO INCLUDE THIS IN OTHER SCRIPTS.
+# ==========================
+/bin/echo -n "Enter input: "
+read input
+
+# Input validation
+if ! validAlphaNum "$input" ; then
+    echo "Please enter only letters and numbers." >&2
+    exit 1
+else
+    echo "Input is valid."
+fi
+
+exit 0

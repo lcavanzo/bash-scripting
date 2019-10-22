@@ -1,0 +1,7 @@
+#!/bin/bash 
+
+# new-locate -- Searches the locate database for the specified pattern
+
+locateDB="/var/locate.db"
+
+exec grep -i "$@" $locateDB

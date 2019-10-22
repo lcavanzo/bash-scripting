@@ -1,0 +1,33 @@
+#!/bin/bash 
+
+# remindme -- Searches a data file for matching liles or, if no
+#   arguments is specifies, shows rhe entire content of the data
+
+rememberfile="$HOME/.remember"
+
+if [ ! -f $rememberfile ] ; then
+    echo "$(basename $0): you don't seem to have a .remember file.">&2
+    echo "To remedy this, please use 'remember' to add reminders" >&2
+    exit 1
+fi
+
+if [ $# -eq 0 ] ; then
+    #Display the whole rememberfile when not given any search criteria
+    less $rememberfile
+else
+    # otherwise, search through the file for  the given terms, and
+    #   diplay the results neatly.
+
+
+
+    #More precisely, a double dash (--) is used in bash built-in commands 
+    #   and many other commands to signify the end of command options, 
+    #   after which only positional parameters are accepted.
+    #Example use: lets say you want to grep a file for the 
+    #   string -v - normally -v will be considered the option to reverse 
+    #   the matching meaning (only show lines that do not match),
+    grep -i -- "$@" $rememberfile | ${PAGER:-less}
+fi
+
+exit 0
+    

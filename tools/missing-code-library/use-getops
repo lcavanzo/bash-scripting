@@ -1,0 +1,27 @@
+#!/bin/sh
+
+##Leer y procesar argumentos
+while getopts ":a:p:d: vh" opt
+do
+    case $opt in
+        v ) echo "Mostrar version" ;;
+        h ) echo "Mostrar ayuda" ;;
+        a ) echo "Opcion -a ha sido capturada"
+          VARIABLE_A=$OPTARG ;;
+        p ) echo "Opcion -p ha sido capturada"
+          VARIABLE_P=$OPTARG ;;
+        d ) echo "Opcion -d ha sido capturada"
+          VARIABLE_D=$OPTARG ;;
+        \? ) echo "Opcion invalida -$OPTARG"
+          exit 1 ;;
+        : ) echo "Opcion -$OPTARG requiere un argumento"
+          exit 1 ;;
+    esac
+done
+shift $((OPTIND-1))
+
+##Mostrar ayuda si un caracter no deseado es introducido##
+if [ -n "$1" ]; then
+    echo "Mostrar ayuda"
+fi
+

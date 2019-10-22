@@ -1,0 +1,42 @@
+url= https://www.cyberciti.biz/tips/bash-shell-parameter-substitution-2.html
+
+using ${var#pattern}
+You can strip $var as per given pattern from front of $var.
+In this example remove /etc/ part and get a filename only, enter:
+    f="/etc/resolv.conf"
+    echo ${f#/etc/}
+        resolv.conf
+
+
+using ${var%pattern}
+Exactly the same as above, except that it applies to the back of $var.
+In this example remove .tar.gz from $FILE,
+    FILE="xcache-1.3.0.tar.gz"
+    echo ${FILE%.tar.gz}
+        xcache-1.3.0
+
+                        Summary
+${parameter:-defaultValue}      Get default shell variables value
+${parameter:=defaultValue}      Set default shell variables value
+${parameter:?"Error Message"}   Display an error message if parameter is not set
+${#var}	                        Find the length of the string
+${var%pattern}                  Remove from shortest rear (end) pattern
+${var%%pattern}	                Remove from longest rear (end) pattern
+${var:num1:num2}                Substring
+${var#pattern}                  Remove from shortest front pattern
+${var##pattern}                 Remove from longest front pattern
+${var/pattern/string}           Find and replace (only replace first occurrence)
+${var//pattern/string}          Find and replace all occurrences
+${!prefix*}                 Expands to the names of variables whose names begin with prefix.
+
+${var,}
+${var,pattern}  Convert first character to lowercase.
+
+${var,,}
+${var,,pattern} Convert all characters to lowercase.
+
+${var^}
+${var^pattern}  Convert first character to uppercase.
+
+${var^^}
+${var^^pattern} Convert all character to uppercase..
